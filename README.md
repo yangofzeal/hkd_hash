@@ -20,5 +20,4 @@ Free vs Unlimited
 HKD Hash Free accelerates models up to 10 MiB.
 
 For larger workloads, upgrade to HKD Hash Unlimited:
-
-[https://github.com/yangofzeal/hkd_hash](https://buy.stripe.com/bJe14gcX17sb4boaR1gUM08)
+https://buy.stripe.com/bJe14gcX17sb4boaR1gUM08
