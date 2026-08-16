@@ -3,12 +3,12 @@
 # Up to 90×+ faster repeated Python hashing — exact results, drop-in acceleration.
 
 HKD Hash accelerates repeated hashing of large immutable Python state by caching exact tuple hashes instead of recomputing them element-by-element on every call.
-
+```text
 from hkd_hash import hash
 import builtins
 
 builtins.hash = hash
-
+```
 No application algorithm changes. No @jit decorators. No approximate hashes.
 
 Same Python hash. Less repeated work.
