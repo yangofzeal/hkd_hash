@@ -1,39 +1,38 @@
-# HKD∞ OBFUSCATE v2 — STATIC PROTECTED MODULE
-# CPython 3.9; all protection work occurs at import, never per function call.
+# HKD∞ OBFUSCATE v3 — PYTHON-3.4-COMPATIBLE PROTECTED MODULE
+# Source payload; no marshal/code-object version dependency.
+# All protection work occurs once at import; protected calls have no wrapper.
 import hashlib as _hh
-import marshal as _hm
 import zlib as _hz
 
-_B=(bytes.fromhex('ce408b8347a9cab391c88c2c1af0e8fbc59df148c5ae7fd1a71fc1e72667fb198696c9b4c3424c994f6af6a1ca9a127ac2511174437eebe2e302d564d4bb88fc0a886402946f2276f72fc0a3d3352286d56a55e7a2b6ca68cd295105443c2a98e676005ff89776a3ea9184dff4f8697129eb943a0a65c0ce8b4a5523e4928620'),
-bytes.fromhex('2029f6095c03876c22b75c1ca3555bb5f2ef5ad14772e4aeb7b2f7112ea003670e00fdac95cf7f3c40520038efec844d61f94c23551f97005544c6e2637f7bde7a60ca5e93d941ce87d78ffeaff7e8d46256385729da42f983cd9e2ecc5789f58ff22ca17f8a7616eed3b2a104786f027ac331fdab3f35b5e64e05da2d8f9cf1'),
-bytes.fromhex('aa727568768a1fb47fd35b93bfd4596ab8997cd95a58f95e150bb9bffe349b61bae4a5106c5e436b8eb04e86ff2ed582dd549c5a511205ad943b9860b1ecdfb34d150ea04e2517d39517d06b1794ca009fc90bf23830d9a6f4a5f95315a32e4e71e2c56d4bd761db3ca940696f8a37dfeca6902b5a1676a27f0fad2b0dc0a058'),
-bytes.fromhex('45a5dc9f3655850fc0e1efdf28c0eff51cdcabb570fd7ecea56947c1c29fa9459a13d0b72fcd75b711df8b2f6ec989ef979bcbc38226b1785265ba7be18c57e5437dbff27255b933a1e034a27ffb68a68f9ec097aeb72c292b3318458d5c73fd39e92dce656fd9a55166af2acb6862427eb902b7e1440e2ab873781dfe702d41'),
-bytes.fromhex('7838da8a7b052cd1fecea1bfc006e6272af8b37aa63a389b83fba06b00dcd20c7198bd927e7b4b986e26056b1974db43d6c6373630317347c415710f1f951b5a143a61c06a3dfa27037ec0f8dfe2a1b0f4a19a2c13127384483eb522ecfc5e98e84e090d3c87149659eb1e17605efb057d3c50a5620a62619c9041ef720e1b5c'),
-bytes.fromhex('5c3e66c76e4ba7acb3bfaba4c4c215508ca9e8c76ce7b3c2078d895d930917fbd65f4f6ddecf9571775ad64d55bd47ee357f5c956c6fcb4a29687d2661769c71adf3652a2a32131393fb267b785e947acf7382196df8d59688f3953d5962bb6e24d0ffd224ee7b633a52f8c9f7a4bbe33a44628e6a4b55271d91e127fd67b0e8'),
-bytes.fromhex('215d44abb4ef1673f3250ba4eb0bc7f0c44342aa0500d1e0ba8c445a1fc38fef8759687d9f207fdb9fb9504fd7031dfa16c2f8ae9ef75d7cf67c538aec00d4639f17e3ea3002b4f8dd9ad8c9e1a2b2e22a47571e06c596b28a3b59da61d69ffb0daca068c0430e67ad9ba66fda4fbec8c50d6e36831bfe5527ec6eeb1bd22ab1'),
-bytes.fromhex('13b87fc428618536a6ce8dc7b1482e4ce30124d9167931e64949658f1a4048a920bdc26b38e35b6dd144e743e38a68902e81bab8d07ed539ae2decb463bece69a6f1364ba83b4ef6a22bdaf92f1c95a5ab7b74aa0a0b019d8b11aa9075d79c4e000d96e500f6c3e879fd84b0fafbcdc64e8b08f480902f5f19b8c65c7774771d'),
-bytes.fromhex('f48c7062ce52ba94a4f541c5b3ad2769f62ee6715a00f55a3d72673c7e6ba6e68244119cef1d08f30bd1d75e40891147f58315d075b2f9b0529f1c13edc204b22eff8d0f2d649076dc264d51d456f47080051df819463e97bc1ff1ea8633ecec7e0ed31c764449eaf3f8011c66bdd94e49c4c5d84ac2c927'),)
-_I=(2, 5, 1, 3, 7, 4, 0, 6, 8)
-_L=(bytes.fromhex('428e5b00e72889f3f52ee26ce6a1ee36e72f13175f445cca2509d342cf61c365'),
-bytes.fromhex('5823ff7f6ced827521f61c026d40f5466df97a760c0fbfd5334bb8cae2dc4df7'),
-bytes.fromhex('22cc0b5f941cf01399a842bb1272cbbebc08c503d88ebcb4c07b4ab9f4d4e980'),
-bytes.fromhex('11a4bc167771b3333f3b5d6426300067f08d281e30ad89e72e24ae5fc6f8d198'),
-bytes.fromhex('3d6e5e0be0a68397e49e73973239a8579a7961f864902fa34408c074c169f0f6'),
-bytes.fromhex('250c0d9413eb9396c882f7bbc03a9cc7a96b86d7f7785e76d4e493e94e0d14f0'),
-bytes.fromhex('666106b92241dc4f13b926e80ef06eae521750ceb45f7c26afba33eac652052c'),
-bytes.fromhex('e5622730713374452725ffdcbb15fcecb75f70e19ab59f156cd2d9425971fe1a'),
-bytes.fromhex('b75c6c3115f27bfb0e658c3bfc6459af2405cc16f6511073c2f78a406bc30248'),)
-_R=bytes.fromhex('ed96c59f7083d40433961f6e58a4c7bcd94182966afd2a4d8d4ecf802093ebdd')
+_B=(bytes.fromhex('bdd98a91fc4f91887a4ad55c808c4a58309813966f3355165cd967922f516ac7bc660a482ccac96b3b16a6d5eab65061a8a423f4c46fee37f38f4d36a14fc91045200ceceadbc2ce9125b8a9d6ab843408fb45ad5949a5c3707022b14ee57135da1bcd047337edda2fa05f05e0d7d58e36e7df671759370244e0860addedc29b'),
+bytes.fromhex('d95d07de8dfca9f2d188163f3c3ca0fa90a1'),
+bytes.fromhex('aa726568cc8bdfc77bb30d69dce68a87687ae07a0b3941dc0d09bada7868c8980107b311dd3f3352d62edccdbb037849112d90a464b77ff9dbe1b1343baee5019e583cd022773640151a6e280c4cc7975dbe99fa7ed50d8eaf630ca47077927951f41d394d941939ed7a91d1cba85db485049cce25163eef1916a9236314a31a'),
+bytes.fromhex('d0c776cf71b4ba7c12600f15dd1b8ed677c807156f048d1ea4ed0232c233c3a605a9823a60b3f891f89d09de115ef100dc8c1e70040089cf3cd33d856ad4408cafa7a56805836ae3e2f345605b6ffb899d66de8bf49f773aaee3a2bcc9fb4d85a972eac2cc08d54a309de7ed2a53ac73538fe581ef66cb6fa5387ce83fa6de53'),
+bytes.fromhex('526c4256130cb6431db8abd1ab0e7fe5a29dcf753b16259c77d2355549674f6dc3d73f9c280fc819d27589821b3e8863f7ebd5028b80b6e57f8f66a930663ea2cc15adfcbd4b426fd9b31ed3f0eb0ec549cabd66fb2f013610f9b9ab35f8b236c4b4bcd62143b55309b1f2a1d0dd460b617f9667a142c51357b97d54cb86658c'),
+bytes.fromhex('746e81446ea5a83a05111fbb957d05ecbd3cac68ac6a9baef6c70430237f118404e5b70e742e5e724addb1f315583b0eae4ff472c11dcb1e759eab4a1d8203a482daaefac196849c95a4736dde4ed25b9108f717951037bfa6beac4a20d51beabebac506fdea5e91c51994d3fe465a9db39d250fe2456b88ba5ae3e8dce7966c'),
+bytes.fromhex('18b6769f1260b4640a88525c6ceb3452690f4fc2e318695639d718fc18a23965e6578fe75020abc00948b641759955c900cd25bb4b5d75e716985e347aed9bc3c06ee697e2340cd48f7093b063485a61d65b59796d2baa6a33dc26c2f017b80d5cdce336e23fbde7576c793bb5404bd49a2b047cf34fe866e4226cfca376547c'),)
+_I=(2, 4, 6, 3, 5, 0, 1)
+_L=(bytes.fromhex('b0ddcddf4de95a09f3c8d17225c2f32d32bd38353675d12524eb14501240c6fe'),
+bytes.fromhex('0d72ad0b2924ee1423e8dc6248f6499be545b2d00b65ae3df5d8b6b375a8bd89'),
+bytes.fromhex('d6dfeb1b08f8de6791ebd116b73bb7c38dccfc0495949a452ebecb9bcb2f7ee5'),
+bytes.fromhex('ecf989ba759e7c02ead89dcc35563e9f6670f891d90b9ed034cb260dc5f9b7bc'),
+bytes.fromhex('ce272240e54bd37c73319faa3183891bb87639990582dc4678d8e2aba0297aa4'),
+bytes.fromhex('858cc6aa35cf49774a773d2aca1dd1f0ccca985b47390f0a0ab736d827469a2d'),
+bytes.fromhex('21a8df4a0d0c4e6360bbc616838af469567f793bedc09433404a82568bb037a7'),)
+_R=bytes.fromhex('2ddc43620242b4bb6c8353fc32412665ad2d4790fe17e52c598d6906e693dc11')
 _S1=bytes.fromhex('b4c44a1d49f84630e6a3d8f9e940b5fe9bac91bad310595a9d955dd8b13e68ff')
 _S2=bytes.fromhex('7e50262985a1f8adbb970e2cb7aaab9a1c50293fd48e23303c28fc9662bd3098')
 
 def _x(a,b):
     return bytes(i^j for i,j in zip(a,b))
 
+def _n4(n):
+    return n.to_bytes(4,'big')
+
 def _ks(k,idx,n):
-    o=bytearray(); c=0; s=k+idx.to_bytes(4,'big')
+    o=bytearray(); c=0; s=k+_n4(idx)
     while len(o)<n:
-        o.extend(_hh.sha256(s+c.to_bytes(4,'big')).digest()); c+=1
+        o.extend(_hh.sha256(s+_n4(c)).digest()); c+=1
     return bytes(o[:n])
 
 def _mr(v):
@@ -52,15 +51,15 @@ for _i in range(len(_I)):
     _m=_B[_I[_i]]
     _r=_x(_m,_ks(_K,_i,len(_m)))
     _P.append(_r)
-    _V.append(_hh.sha256(_i.to_bytes(4,'big')+_r).digest())
+    _V.append(_hh.sha256(_n4(_i)+_r).digest())
 if tuple(_V)!=_L or _mr(_V)!=_R:
     raise ImportError('HKD∞ SHA-256 integrity verification failed')
 
-_C=_hm.loads(_hz.decompress(b''.join(_P)))
+try:
+    _S=_hz.decompress(b''.join(_P)).decode('utf-8')
+except (ValueError, UnicodeDecodeError, _hz.error):
+    raise ImportError('HKD∞ protected payload reconstruction failed')
 
-# Execute protected code in a fresh module-shaped namespace. This is critical
-# for hot paths: loader temporaries never contaminate the function globals
-# dictionary with deleted slots/tombstones.
 _G=globals()
 _N={
     '__name__':_G.get('__name__'),
@@ -72,12 +71,13 @@ _N={
     '__cached__':_G.get('__cached__'),
     '__builtins__':_G.get('__builtins__'),
 }
+_C=compile(_S,_G.get('__file__') or '<HKD-obfuscated>','exec',0,True,0)
 exec(_C,_N,_N)
 
-# Publish source-defined names to the actual module object. Functions keep _N
-# as __globals__, matching a clean normal module execution environment.
-for _q,_v in _N.items():
+for _q,_v in list(_N.items()):
     if _q != '__builtins__':
         _G[_q]=_v
 
-del _B,_I,_L,_R,_S1,_S2,_K,_P,_V,_C,_i,_m,_r,_x,_ks,_mr,_q,_v,_N,_G,_hh,_hm,_hz
+# Functions retain _N as their normal globals dictionary. Remove loader-only names
+# from the actual module namespace without mutating _N after source execution.
+del _B,_I,_L,_R,_S1,_S2,_K,_P,_V,_S,_C,_i,_m,_r,_x,_n4,_ks,_mr,_q,_v,_N,_G,_hh,_hz
